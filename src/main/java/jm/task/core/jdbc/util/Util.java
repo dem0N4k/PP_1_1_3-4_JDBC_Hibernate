@@ -23,7 +23,7 @@ public class Util {
 
     public static void closeConnection() {
         try {
-            if (!getConnection().isClosed()){
+            if (!getConnection().isClosed()) {
                 getConnection().close();
             }
         } catch (SQLException e) {

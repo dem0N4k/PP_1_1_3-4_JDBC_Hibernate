@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        userDaoJDBC.saveUser(name,lastName,age);
+        userDaoJDBC.saveUser(name, lastName, age);
     }
 
     public void removeUserById(long id) {
@@ -34,5 +34,7 @@ public class UserServiceImpl implements UserService {
         userDaoJDBC.cleanUsersTable();
     }
 
-    public String getUserName() {return userDaoJDBC.getUserName();}
+    public String getUserName() {
+        return userDaoJDBC.getUserName();
+    }
 }
