@@ -1,18 +1,19 @@
 package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
-import jm.task.core.jdbc.util.Util;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDaoJDBCImpl extends Util implements UserDao {
+import static jm.task.core.jdbc.util.Util.getConnection;
 
-    private Connection connection = getConnection();
+
+public class UserDaoJDBCImpl implements UserDao {
+
+    private final Connection connection = getConnection();
 
     public UserDaoJDBCImpl() {
-
     }
 
     public void createUsersTable() {
@@ -33,7 +34,6 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         } catch (SQLException ignore) {
         }
     }
-
 
     public void saveUser(String name, String lastName, byte age) {
         String sql = "INSERT INTO user (NAME, LASTNAME, AGE) VALUES(?, ?, ?)";
@@ -94,7 +94,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         }
     }
 
-    public String getUserName() {                                   // написал метод сюда, чтоб не засорять main
+    public String getUserName() {
         String sql = "SELECT NAME FROM user";
         String userName = null;
         try (Statement statement = connection.createStatement()) {
